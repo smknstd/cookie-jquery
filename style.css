@@ -1,0 +1,69 @@
+body {
+  font-family: "Helvetica Neue", 'Helvetica', sans-serif;
+  color: #666;
+  margin: 1em;
+  line-height: 2;
+}
+
+a:link,
+a:visited /* styles the links */ {
+  color: #f00;
+  text-decoration: none;
+  padding-bottom: 0.1875em; /* 3px / 16px */
+}
+a:hover /* changes the colour of text when hovered */ {
+  color: #fe580f;
+  cursor: pointer;
+}
+
+#welcomeback {
+  display: none;
+}
+#red {
+  display: none;
+  background: #FC6A71;
+}
+#blue {
+  display: none;
+  background: #A0E4F7;
+}
+
+.color {
+  font-size: 1.5em;
+  text-align: center;
+  width: 42%;
+  padding: 0 2%;
+  position: relative;
+  top: 20px;
+  margin:0 auto;
+}
+
+a.red {
+  padding-left: 10px;
+  color: #FC6A71;
+}
+a.blue {
+  padding-right: 10px;
+  color: #A0E4F7;
+}
+
+.message {
+  font-size: 1.5em;
+  text-align: center;
+  width: 42%;
+  padding: 0 2%;
+  position: relative;
+  top: 20px;
+  background: #eee;
+  margin:0 auto;
+}
+
+footer {
+  position:fixed;
+  bottom: 10px;
+  color: #888;
+  text-align: center;
+  width: 600px;
+  left: 50%; /* on positionne l'élément à la moitié de l'écran */
+  margin-left: -300px;
+}

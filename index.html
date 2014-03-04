@@ -1,0 +1,103 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>JS demo : cookies basics with jquery</title>
+  <meta name="author" content="Arnaud Becher" />
+  <meta name="description" content="Cookies basics with jquery" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="hello" class="message">
+      <p>Hello, this is your first time here.</p>
+      <p>(Refresh your page to hide this message)</p>
+    </div>
+    <div id="welcomeback" class="message">
+      <p>Welcome back! This is not your first visit.</p>
+      <p>(Even when you refresh the page, the browser remembers your choice)</p>
+    </div>
+      
+    <div id="choose" class="message">
+      <p>Click your favorite color:</p>
+      <p><a href="#" class="blue" title="Blue pill">blue</a><a href="#" class="red" title="Red pill">red</a></p>
+    </div>
+    <div id="blue" class="color">
+      <p>This is the color you chose</p>
+    </div>
+    <div id="red" class="color">
+      <p>This is the color you chose</p>
+    </div>
+  </div><!--end div_container-->
+
+  <footer>
+    <div class="reset">To reset, <a href="">remove the cookies</a>.</div>
+    Written by <a href="http://www.smknstd.io" target="_blank" title="blog">Arnaud Becher</a> &bull; 15/01/2014 &bull; Source code on <a href="http://github.com/smokinstudio/cookiedemo" target="_blank" title="GitHub">GitHub</a>
+  </footer>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="cookie.js"></script>
+  <script type="text/JavaScript">
+    $(document).ready(function() {
+      // COOKIES
+      // if the cookie is true, hide the initial message and show the other one
+      if ($.cookie('loaded') == 'yes') {
+        $('#hello').hide();
+        $('#welcomeback').show();
+      }
+
+      switch ($.cookie('chose')) {
+        case "blue":
+          $('#choose').hide();
+          $('#blue').show();
+          break;
+        case "red":
+          $('#choose').hide();
+          $('#red').show();
+          break;
+        case "no":
+        default:
+          break;
+      }
+
+      // on load : mark the page already visited in the cookie
+      $.cookie('loaded', 'yes', {expires: 7 });
+
+      // when “blue” pill clicked
+      $('.blue').click(function() {
+
+        $('#choose').hide();
+        $('#blue').show();
+
+        // add cookie setting that user has clicked
+        $.cookie('chose', 'blue', {expires: 7 });
+        
+        return false;
+      });
+
+      // when “red” pill clicked
+      $('.red').click(function() {
+
+        $('#choose').hide();
+        $('#red').show();
+
+        // add cookie setting that user has clicked
+        $.cookie('chose', 'red', {expires: 7 });
+        
+        return false;
+      });
+
+      // when "reset" clicked
+      $('.reset a').click(function() {
+        
+          // update cookie settings
+          $.cookie('loaded', 'no', {expires: 7 });
+          $.cookie('chose', 'no', {expires: 7 });
+        
+        location.reload();
+      });
+
+    });
+  </script>
+</body>
+</html>
